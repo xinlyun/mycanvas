@@ -1,6 +1,7 @@
 package com.lin.mycanvas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ public class MainActivity extends Activity {
 //        ideaCanvas = new IdeaCanvas(this);
 //        setContentView(ideaCanvas);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
         initview();
     }
     private void initview(){
@@ -38,7 +41,6 @@ public class MainActivity extends Activity {
                 ideaCanvas.setDrawOrmove(true);
             }
         });
-
 
     }
 

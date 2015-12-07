@@ -6,14 +6,15 @@ android {
 
     defaultConfig {
         applicationId "com.lin.mycanvas"
-        minSdkVersion 21
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,4 +22,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':floatactionbutton')
 }

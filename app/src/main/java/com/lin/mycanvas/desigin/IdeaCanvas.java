@@ -2,6 +2,7 @@ package com.lin.mycanvas.desigin;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 /**
- * Created by root on 15-9-15.
+ *
  */
 public class IdeaCanvas extends View {
     Context context ;
@@ -18,10 +19,14 @@ public class IdeaCanvas extends View {
     private float posix,posiy;
     boolean drawOrmove=true;
     private Micon mover=null;
+    private Paint paint;
     public IdeaCanvas(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         micons = new ArrayList<>();
         this.context = context;
+    }
+    public void setPaint(Paint paint){
+        this.paint = paint;
     }
     public IdeaCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,7 +55,7 @@ public class IdeaCanvas extends View {
         if(drawOrmove){
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
-                    currMicon = new Micon();
+                    currMicon = paint==null?new Micon():new Micon(paint);
                     micons.add(currMicon);
                     currMicon.draw(event);
                     break;
@@ -88,8 +93,4 @@ public class IdeaCanvas extends View {
         invalidate();
         return true;
     }
-
-
-
-
 }
